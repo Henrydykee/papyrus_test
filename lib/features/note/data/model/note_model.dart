@@ -19,4 +19,19 @@ class NoteModel extends HiveObject {
     required this.title,
     required this.content,
   });
+
+  factory NoteModel.fromJson(dynamic map) {
+    return NoteModel(
+        id: map['id'] as String,
+        title: map['title'] as String,
+        content: map['content'] as String);
+  }
+
+  Map<String, dynamic> toJson(){
+    return {
+      'id': id,
+      'title': title,
+      'content': content,
+    };
+  }
 }

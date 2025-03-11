@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_ui/boxes_view.dart';
 import '../../../../core/providers/provider.dart';
+import '../../../../main.dart';
 import '../../domain/entities/note_entity.dart';
 import 'create_edit_note_screen.dart';
 import 'note_detail_screen.dart';
@@ -64,8 +66,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => CreateEditNoteScreen()),
+            MaterialPageRoute(builder: (context) => HiveBoxesView(
+                hiveBoxes: BoxClass.allBoxes,
+                onError: (String errorMessage) =>
+                {
+                  print(errorMessage)
+                })),
           );
+
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (_) => CreateEditNoteScreen()),
+          // );
         },
       ),
     );

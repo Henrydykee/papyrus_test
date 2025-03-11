@@ -44,6 +44,7 @@ class _CreateEditNoteScreenState extends ConsumerState<CreateEditNoteScreen> {
         await ref.read(noteViewModelProvider.notifier).addNote(newNote);
       } else {
         await ref.read(noteViewModelProvider.notifier).updateNote(newNote);
+        Navigator.pop(context);
       }
       Navigator.pop(context);
     }
